@@ -200,7 +200,7 @@ const Bookmark = () => {
                         </HStack>
                         {articlesCom}
                         <Divider mt='0 !important' />
-                        <chakra.div h='45px' display='flex' alignItems='center'>
+                        <chakra.div h='45px' display='flex' alignItems='center' mt='0px !important'>
                             <chakra.h1 fontSize={FontSize.low} fontWeight='medium' color={Color.main} mt='0px' cursor='pointer'>
                                 View All
                             </chakra.h1>
@@ -217,7 +217,20 @@ const Notification = () => {
         const date = moment().subtract(3, 'day').subtract(Math.floor(Math.random() * 24), 'hour').format('MMM DD HH:mm a')
 
         return (
-            <HStack justifyContent='start' alignItems='center' w='full' px='20px' spacing='15px' my='8px !important'>
+            <HStack
+                justifyContent='start'
+                alignItems='center'
+                w='full'
+                px='20px'
+                spacing='15px'
+                py='8px !important'
+                m='0 !important'
+                cursor='pointer'
+                _hover={{
+                    backgroundColor: Color["black-10"],
+                    transition: 'background-color 0.3s'
+                }}
+            >
                 <Image src={user.profile} borderRadius='full' minW='40px !important' fit='cover' h='40px !important' />
                 <VStack alignItems='start'>
                     <chakra.h1 fontSize={FontSize.low2} fontWeight='medium' color={Color["black-75"]}>
@@ -259,8 +272,8 @@ const Notification = () => {
                         <Divider mt='0 !important' />
                         <Notification user={users[5]} />
                         <Divider mt='0 !important' />
-                        <chakra.div h='45px' display='flex' alignItems='center'>
-                            <chakra.h1 fontSize={FontSize.low} fontWeight='medium' color={Color.main} mt='0px' cursor='pointer'>
+                        <chakra.div h='45px' display='flex' alignItems='center' mt='0px !important'>
+                            <chakra.h1 fontSize={FontSize.low} fontWeight='medium' color={Color.main} cursor='pointer'>
                                 View All
                             </chakra.h1>
                         </chakra.div>
