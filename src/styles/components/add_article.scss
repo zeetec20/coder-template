@@ -1,0 +1,13 @@
+@import '../_variables.scss';
+
+@media only screen and (max-width: #{$screen_sidebar_left_only}px) {
+    .add_article {
+        width: calc(100% - 30px);
+    }
+}
+
+@media only screen and (max-width: 650px) {
+    .add_article {
+        width: 100%;
+    }
+}

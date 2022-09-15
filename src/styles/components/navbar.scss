@@ -1,0 +1,75 @@
+@media only screen and (max-width: 1050px) {
+    .navbar {
+        .search {
+            min-width: 30vw;
+        }
+    }
+}
+
+@media only screen and (max-width: 750px) {
+    .navbar {
+        padding-inline: 30px !important;
+
+        .profile {
+            h1 {
+                display: none;
+            }
+    
+            .icon-dropdown {
+                display: none;
+            }
+        }
+    }
+
+}
+
+@media only screen and (max-width: 530px) {
+    .navbar {
+        .button-bookmark, .button-notification, .button-search {
+            height: 38px;
+            min-width: 38px;
+            max-width: 38px;
+
+            svg {
+                height: 18px;
+                width: 18px;
+            }
+        }
+
+        .button-search {
+            svg {
+                height: 16px;
+                width: 16px;
+            }
+        }
+
+        .profile img {
+            height: 38px;
+            min-width: 38px;
+            max-width: 38px;
+        }
+    }
+}
+
+@media only screen and (max-width: 475px) {
+    .navbar {
+        .logo {
+            display: none;
+        }
+    }
+}
+
+.sidebar-navbar {
+    @keyframes load-sidebar-navbar {
+        from {
+            margin-left: -310px;
+        }
+
+        to {
+            margin-left: 0;
+        }
+    }
+
+    animation-name: load-sidebar-navbar;
+    animation-duration: 0.5s;
+}

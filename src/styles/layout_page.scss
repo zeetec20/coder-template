@@ -1,0 +1,74 @@
+@import './_variables.scss';
+
+$width-sidebar-left-1400: 24vw;
+$width-sidebar-right-1400: 27vw;
+$width-sidebar-left-1050: 27vw;
+$width-sidebar-right-1050: 30vw;
+
+@media only screen and (max-width: 1400px) {
+    #sidebar-left {
+        width: $width-sidebar-left-1400 !important;
+    }
+
+    #main-content {
+        width: calc(100vw - ($width-sidebar-left-1400 + $width-sidebar-right-1400)) !important;
+    }
+
+    #sidebar-right {
+        width: $width-sidebar-right-1400 !important;
+    }
+}
+
+@media only screen and (max-width: 1050px) {
+    #sidebar-left {
+        width: $width-sidebar-left-1050 !important;
+    }
+
+    #main-content {
+        width: calc(100vw - ($width-sidebar-left-1050 + $width-sidebar-right-1050)) !important;
+    }
+
+    #sidebar-right {
+        width: $width-sidebar-right-1050 !important;
+    }
+}
+
+@media only screen and (max-width: #{$screen_sidebar_left_only}px) {
+    #sidebar-left {
+        width: #{$width-sidebar-left-only}vw !important;
+    }
+
+    #sidebar-right {
+        width: #{$width-sidebar-left-only}vw !important;
+    }
+
+    #main-content {
+        overflow: hidden;
+        width: #{calc(100 - $width-sidebar-left-only)}vw !important;
+    }
+}
+
+@media only screen and (max-width: 650px) {
+    #sidebar-left {
+        display: none;
+    }
+
+    #sidebar-right {
+        display: none;
+    }
+
+    #main-content {
+        width: 100vw !important;
+        padding-inline: 30px;
+    }
+}
+
+#sidebar-left.mobile {
+    width: 100% !important;
+}
+
+#sidebar-right.mobile {
+    width: 100% !important;
+    display: block;
+    margin-top: 30px;
+}

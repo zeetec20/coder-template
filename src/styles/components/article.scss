@@ -1,0 +1,75 @@
+@import '../_variables.scss';
+
+@media only screen and (max-width: 1050px) {
+    .article {
+        .banner {
+            height: 210px;
+        }
+
+        .wrap {
+            padding-inline: 30px;
+        }
+
+        .title {
+            font-size: 22px;
+        }
+
+        .profile {
+            img {
+                width: 28px;
+                height: 28px;
+            }
+
+            .name {
+                font-size: 13px;
+            }
+
+            .date {
+                font-size: 11px;
+            }
+        }
+
+        .tag p {
+            font-size: 11px;
+        }
+
+        .likes, .comments, .min-read {
+            svg {
+                width: 15px;
+                height: 15px;
+            }
+
+            h1 {
+                font-weight: 600;
+            }
+        }
+
+        .comments svg {
+            width: 12.5px;
+            height: 12.5px;
+        }
+
+        .bookmark {
+            height: 30px !important;
+            width: 30px !important;
+            min-width: 30px !important;
+
+            svg {
+                width: 15px;
+                height: 15px;
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: #{$screen_sidebar_left_only}px) {
+    .article {
+        width: calc(100% - 30px);
+    }
+}
+
+@media only screen and (max-width: 650px) {
+    .article {
+        width: 100%;
+    }
+}

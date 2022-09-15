@@ -1,0 +1,13 @@
+$screen_search_mode_button: 875;
+$screen_sidebar_left_only: 850;
+$screen_navbar_button_active: 650;
+$screen_profile_image_only: 750;
+$width-sidebar-left-only: 40;
+
+
+:export {
+    screen_search_mode_button: $screen_search_mode_button;
+    screen_sidebar_left_only: $screen_sidebar_left_only;
+    screen_navbar_button_active: $screen_navbar_button_active;
+    screen_profile_image_only: $screen_profile_image_only;
+}
