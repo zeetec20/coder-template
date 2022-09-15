@@ -6,7 +6,6 @@ const articles = [
         tags: ['javascript', 'company', 'programing', 'discuss'],
         countLike: 98,
         timeRead: 2,
-        content: '',
         createdAt: '22-06-2022 12:15:00'
     },
     {
@@ -16,7 +15,6 @@ const articles = [
         tags: ['javascript', 'state', 'react', 'webdev'],
         countLike: 30,
         timeRead: 3,
-        content: '',
         createdAt: '20-02-2022 12:15:00'
     },
     {
@@ -26,7 +24,6 @@ const articles = [
         tags: ['react', 'webdev', 'javascript', 'beginners'],
         countLike: 56,
         timeRead: 7,
-        content: '',
         createdAt: '30-05-2022 12:15:00'
     },
     {
@@ -36,27 +33,24 @@ const articles = [
         tags: ['javascript', 'webdev', 'programing', 'beginners'],
         countLike: 60,
         timeRead: 4,
-        content: '',
         createdAt: '01-05-2022 12:15:00'
     },
     {
-        user: 3,
-        title: 'Scope in JavaScript (Block Scope and Function Scope)',
-        banner: 'assets/articles/scope-in-javaScript-block-scope-and-function-scope.png',
+        user: 5,
+        title: 'How to Become a Better Developer',
+        banner: 'assets/articles/how-to-become-a-better-developer.png',
         tags: ['javascript', 'webdev', 'programing', 'beginners'],
-        countLike: 60,
-        timeRead: 4,
-        content: '',
+        countLike: 38,
+        timeRead: 8,
         createdAt: '01-05-2022 12:15:00'
     },
     {
-        user: 3,
-        title: 'Scope in JavaScript (Block Scope and Function Scope)',
-        banner: 'assets/articles/scope-in-javaScript-block-scope-and-function-scope.png',
+        user: 10,
+        title: 'It’s Not a Bug, It’s a Feature – Communication Challenges Faced by Developers and Testers',
+        banner: 'assets/articles/its-not-a-bug-its-a-feature-communication-challenges-faced-by-developers-and-testers.png',
         tags: ['javascript', 'webdev', 'programing', 'beginners'],
-        countLike: 60,
+        countLike: 29,
         timeRead: 4,
-        content: '',
         createdAt: '01-05-2022 12:15:00'
     },
 ]

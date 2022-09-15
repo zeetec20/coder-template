@@ -7,7 +7,6 @@ const Home = () => {
     return (
         <chakra.div>
             <AddArticle/>
-            
             {articles.map((article, index) => {
                 const props = {
                     ...article,
