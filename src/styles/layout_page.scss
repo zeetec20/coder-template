@@ -5,6 +5,21 @@ $width-sidebar-right-1400: 27vw;
 $width-sidebar-left-1050: 27vw;
 $width-sidebar-right-1050: 30vw;
 
+.article-show-mobile {
+    display: none !important;
+}
+
+#sidebar-left.mobile {
+    width: 100% !important;
+}
+
+#sidebar-right.mobile {
+    width: 100% !important;
+    display: block;
+    margin-top: 30px;
+}
+
+
 @media only screen and (max-width: 1400px) {
     #sidebar-left {
         width: $width-sidebar-left-1400 !important;
@@ -61,14 +76,8 @@ $width-sidebar-right-1050: 30vw;
         width: 100vw !important;
         padding-inline: 30px;
     }
-}
 
-#sidebar-left.mobile {
-    width: 100% !important;
-}
-
-#sidebar-right.mobile {
-    width: 100% !important;
-    display: block;
-    margin-top: 30px;
+    .article-show-mobile {
+        display: flex !important;
+    }
 }
