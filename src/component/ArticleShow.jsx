@@ -1,8 +1,9 @@
 import { HStack, VStack, chakra } from "@chakra-ui/react"
 import { useState } from "react"
+import { BsStar } from "react-icons/bs"
 import { FaStar } from "react-icons/fa"
 import { GoListOrdered } from "react-icons/go"
-import { RiUserStarFill } from "react-icons/ri"
+import { RiUserStarFill, RiUserStarLine } from "react-icons/ri"
 import Color from "utils/color"
 import FontSize from "utils/fontSize"
 
@@ -74,6 +75,27 @@ const ArticleOptionShow = ({ icon, title, description, onClick, isSelected }) =>
                 <chakra.h1 fontSize={FontSize.low2} fontWeight='bold' color={Color.black}>{title}</chakra.h1>
                 <chakra.p fontSize={FontSize.low2} color={Color.black}>{description}</chakra.p>
             </chakra.div>
+        </HStack>
+    )
+}
+
+export const ArticleShowMobile = () => {
+    const [active, setActive] = useState(0)
+
+    const Button = ({icon, text, active, onClick}) => {
+        return (
+            <HStack bg={active ? Color.main : 'white'} px='13px' rounded='lg' py='6px' onClick={onClick}>
+                {icon(active)}
+                <chakra.h1 fontSize={FontSize.low3} fontWeight='600' color={active ? 'white' : Color.black}>{text}</chakra.h1>
+            </HStack>
+        )
+    }
+
+    return (
+        <HStack mt='30px' spacing='10px' className="article-show-mobile">
+            <Button icon={(active) => <GoListOrdered size='13px' color={active ? 'white' : Color.black} />} text='Newest' active={active === 0} onClick={() => setActive(0)} />
+            <Button icon={(active) => <BsStar size='13px' color={active ? 'white' : Color.black} />} text='Popular' active={active === 1} onClick={() => setActive(1)} />
+            <Button icon={(active) => <RiUserStarLine size='13px' color={active ? 'white' : Color.black} />} text='Following' active={active === 2} onClick={() => setActive(2)} />
         </HStack>
     )
 }

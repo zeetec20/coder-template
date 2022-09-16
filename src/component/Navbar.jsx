@@ -16,9 +16,9 @@ import {
     ModalOverlay,
     ModalContent,
 } from "@chakra-ui/react"
-import { AiFillBell, AiOutlinePoweroff, AiOutlineUser } from 'react-icons/ai'
-import { BsCalendar2EventFill, BsFillCaretDownFill } from 'react-icons/bs'
-import { FaSearch, FaUserFriends } from 'react-icons/fa'
+import { AiFillBell, AiOutlinePoweroff, AiOutlineSetting, AiOutlineUser } from 'react-icons/ai'
+import { BsFillCaretDownFill } from 'react-icons/bs'
+import { FaSearch } from 'react-icons/fa'
 import { MdCollectionsBookmark, MdOutlineClose } from 'react-icons/md'
 import LogoImage from 'assets/logo.png'
 import users from "data/users"
@@ -29,14 +29,13 @@ import 'styles/components/navbar.scss'
 import variableScss from 'styles/_variables.scss'
 import useScreen from "hooks/useScreen"
 import { useEffect, useState } from "react"
-import { HiHashtag } from "react-icons/hi"
+import { HiOutlineHashtag } from "react-icons/hi"
 import Overlay from "./Overlay"
-import { FiChevronRight, FiHelpCircle } from "react-icons/fi"
+import { FiCalendar, FiChevronRight, FiHelpCircle, FiUsers } from "react-icons/fi"
 import FontSize from "utils/fontSize"
 import moment from "moment"
 import { ArticleOnBookmark } from 'component/Article'
 import articles from "data/articles"
-import { IoIosExit, IoMdHelpCircle, IoMdSettings } from "react-icons/io"
 
 const { screen_search_mode_button, screen_navbar_button_active, screen_profile_image_only } = variableScss
 
@@ -413,9 +412,9 @@ const SidebarOnNavbar = ({ close }) => {
 
     return (
         <Overlay onClick={close}>
-            <VStack bg='white' h='100vh' overflow='auto' w='250px' alignItems='start' className="sidebar-navbar">
+            <VStack bg='white' h='100vh' overflow='auto' w='300px' alignItems='start' className="sidebar-navbar">
                 <HStack justifyContent='space-between' px='10px' py='10px !important' w='full' bg={Color.grey2}>
-                    <Logo height={40} />
+                    <chakra.h1 fontSize={FontSize.medium} fontWeight='900' color={Color.main}>CODER</chakra.h1>
                     <ButtonIcon width="33px" height="33px">
                         <MdOutlineClose size='20px' color={Color.main} onClick={close} />
                     </ButtonIcon>
@@ -430,7 +429,7 @@ const SidebarOnNavbar = ({ close }) => {
                         maxW={'70px'}
                         minW={'70px'}
                         padding='2.5px'
-                        rounded='lg'
+                        rounded='full'
                         mb='5px'
                         src={user.profile}
                     />
@@ -463,31 +462,31 @@ const SidebarOnNavbar = ({ close }) => {
 
                 <HStack pl='10px' mt='20px !important'>
                     <chakra.div width='25px' height='25px' display='flex' justifyContent='center' alignItems='center'>
-                        <FaUserFriends size='19px' color={Color["black-75"]} />
+                        <FiUsers size='18px' color={Color["black-75"]} />
                     </chakra.div>
                     <chakra.h1 fontSize={FontSize.low2} fontWeight='600' ml='7px !important' color={Color.black}>Following</chakra.h1>
                 </HStack>
                 <HStack pl='10px' mt='10px !important'>
                     <chakra.div width='25px' height='25px' display='flex' justifyContent='center' alignItems='center'>
-                        <HiHashtag size='22px' color={Color["black-75"]} />
+                        <HiOutlineHashtag size='21px' color={Color["black-75"]} />
                     </chakra.div>
                     <chakra.h1 fontSize={FontSize.low2} fontWeight='600' ml='7px !important' color={Color.black}>Tags</chakra.h1>
                 </HStack>
                 <HStack pl='10px' mt='10px !important'>
                     <chakra.div width='25px' height='25px' display='flex' justifyContent='center' alignItems='center'>
-                        <BsCalendar2EventFill size='17px' color={Color["black-75"]} />
+                        <FiCalendar size='16px' color={Color["black-75"]} />
                     </chakra.div>
                     <chakra.h1 fontSize={FontSize.low2} fontWeight='600' ml='7px !important' color={Color.black}>Event</chakra.h1>
                 </HStack>
                 <HStack pl='10px' mt='10px !important'>
                     <chakra.div width='25px' height='25px' display='flex' justifyContent='center' alignItems='center'>
-                        <IoMdSettings size='22px' color={Color["black-75"]} />
+                        <AiOutlineSetting size='21px' color={Color["black-75"]} />
                     </chakra.div>
                     <chakra.h1 fontSize={FontSize.low2} fontWeight='600' ml='7px !important' color={Color.black}>Settings</chakra.h1>
                 </HStack>
                 <HStack pl='10px' mt='10px !important'>
                     <chakra.div width='25px' height='25px' display='flex' justifyContent='center' alignItems='center'>
-                        <IoMdHelpCircle size='22px' color={Color["black-75"]} />
+                        <FiHelpCircle size='21px' color={Color["black-75"]} />
                     </chakra.div>
                     <chakra.h1 fontSize={FontSize.low2} fontWeight='600' ml='7px !important' color={Color.black}>Help Center</chakra.h1>
                 </HStack>
@@ -497,7 +496,7 @@ const SidebarOnNavbar = ({ close }) => {
                 <VStack h='full' justifyContent='end' pb='10px'>
                     <HStack pl='10px' mt='10px !important'>
                         <chakra.div width='25px' height='25px' display='flex' justifyContent='center' alignItems='center'>
-                            <IoIosExit size='22px' color={Color["black-75"]} />
+                            <AiOutlinePoweroff size='21px' color={Color["black-75"]} />
                         </chakra.div>
                         <chakra.h1 fontSize={FontSize.low2} fontWeight='600' ml='7px !important' color={Color.black}>Sign Out</chakra.h1>
                     </HStack>

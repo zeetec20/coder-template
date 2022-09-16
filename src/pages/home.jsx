@@ -1,12 +1,15 @@
 import Article from 'component/Article'
 import articles from 'data/articles'
-import { chakra } from '@chakra-ui/react'
+import { Button, chakra, HStack } from '@chakra-ui/react'
 import AddArticle from 'component/AddArticle'
+import {ArticleShowMobile} from 'component/ArticleShow'
+
 
 const Home = () => {
     return (
         <chakra.div>
-            <AddArticle/>
+            <AddArticle />
+            <ArticleShowMobile />
             {articles.map((article, index) => {
                 const props = {
                     ...article,
