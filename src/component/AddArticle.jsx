@@ -24,7 +24,7 @@ const AddArticle = () => {
             >
                 Let's share what your learn...
             </chakra.h1>
-            <ButtonIcon width='40px' height='40px' >
+            <ButtonIcon width='40px' height='40px' className='button-write'>
                 <FaPencilAlt size={'18px'} color={Color.main} />
             </ButtonIcon>
         </HStack>

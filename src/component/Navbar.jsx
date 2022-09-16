@@ -17,8 +17,8 @@ import {
     ModalContent,
 } from "@chakra-ui/react"
 import { AiFillBell, AiOutlinePoweroff, AiOutlineUser } from 'react-icons/ai'
-import { BsFillCaretDownFill } from 'react-icons/bs'
-import { FaSearch } from 'react-icons/fa'
+import { BsCalendar2EventFill, BsFillCaretDownFill } from 'react-icons/bs'
+import { FaSearch, FaUserFriends } from 'react-icons/fa'
 import { MdCollectionsBookmark, MdOutlineClose } from 'react-icons/md'
 import LogoImage from 'assets/logo.png'
 import users from "data/users"
@@ -29,19 +29,18 @@ import 'styles/components/navbar.scss'
 import variableScss from 'styles/_variables.scss'
 import useScreen from "hooks/useScreen"
 import { useEffect, useState } from "react"
-import { HiMenu } from "react-icons/hi"
+import { HiHashtag } from "react-icons/hi"
 import Overlay from "./Overlay"
-import SidebarLeft from "./SidebarLeft"
-import SidebarRight from "./SidebarRight"
-import { FiHelpCircle } from "react-icons/fi"
+import { FiChevronRight, FiHelpCircle } from "react-icons/fi"
 import FontSize from "utils/fontSize"
 import moment from "moment"
 import { ArticleOnBookmark } from 'component/Article'
 import articles from "data/articles"
+import { IoIosExit, IoMdHelpCircle, IoMdSettings } from "react-icons/io"
 
 const { screen_search_mode_button, screen_navbar_button_active, screen_profile_image_only } = variableScss
 
-const Profile = () => {
+const Profile = ({ navbarSidebar, navbarSiebarTriger }) => {
     const PopoverProfile = ({ triger, mt }) => {
         const ButtonPopoverProfile = ({ icon, text }) => {
             return (
@@ -77,14 +76,14 @@ const Profile = () => {
                                 mb='5px'
                                 src={user.profile}
                             />
-                            <chakra.h1
+                            <chakra.p
                                 fontWeight={'bold'}
                                 fontSize={fontSize.medium}
                                 color={Color.black}
                                 lineHeight='1em'
                             >
                                 {user.name}
-                            </chakra.h1>
+                            </chakra.p>
                             <chakra.p
                                 fontWeight={'bold'}
                                 fontSize={fontSize.low2}
@@ -119,22 +118,35 @@ const Profile = () => {
 
     return (
         <chakra.div display={'flex'} alignItems='center' className="profile">
-            {onlyImage ? (
-                <PopoverProfile
-                    mt='18px'
-                    triger={
-                        <Image
-                            backgroundColor={Color["grey-50"]}
-                            maxH={'45px'}
-                            fit='cover'
-                            maxW={'47px'}
-                            minW={'47px'}
-                            padding='2.5px'
-                            rounded='lg'
-                            src={user.profile}
-                        />
-                    }
-                />
+            {!navbarSidebar ? (
+                onlyImage ? (
+                    <PopoverProfile
+                        mt='18px'
+                        triger={
+                            <Image
+                                backgroundColor={Color["grey-50"]}
+                                maxH={'45px'}
+                                fit='cover'
+                                maxW={'47px'}
+                                minW={'47px'}
+                                padding='2.5px'
+                                rounded='lg'
+                                src={user.profile}
+                            />
+                        }
+                    />
+                ) : (
+                    <Image
+                        backgroundColor={Color["grey-50"]}
+                        maxH={'45px'}
+                        fit='cover'
+                        maxW={'47px'}
+                        minW={'47px'}
+                        padding='2.5px'
+                        rounded='lg'
+                        src={user.profile}
+                    />
+                )
             ) : (
                 <Image
                     backgroundColor={Color["grey-50"]}
@@ -145,8 +157,10 @@ const Profile = () => {
                     padding='2.5px'
                     rounded='lg'
                     src={user.profile}
+                    onClick={navbarSiebarTriger}
                 />
-            )}
+            )
+            }
             <chakra.h1
                 fontWeight={'bold'}
                 whiteSpace='nowrap'
@@ -375,21 +389,17 @@ const Navbar = () => {
             >
                 <Flex alignItems='center' justifyContent="space-between" mx="auto" w={'full'}>
                     <HStack display="flex" spacing={3} alignItems="center">
-                        {buttonNavbarActive && (
-                            <ButtonIcon onClick={onOpen}>
-                                <HiMenu color={Color.main} size='22px' />
-                            </ButtonIcon>
-                        )}
                         <Logo />
                         {searchActive && <Search />}
                     </HStack>
 
-                    <HStack spacing={'15px'} display={mobileNav.isOpen ? "none" : "flex"} alignItems="center">
+                    <HStack spacing={'15px'} w={buttonNavbarActive ? 'full' : undefined} justifyContent='space-between' display={mobileNav.isOpen ? "none" : "flex"} alignItems="center">
                         {!searchActive && <SearchButton />}
-                        <Bookmark />
-                        <Notification />
-
-                        <Profile />
+                        <HStack spacing='15px'>
+                            <Bookmark />
+                            <Notification />
+                            <Profile navbarSidebar={buttonNavbarActive} navbarSiebarTriger={onOpen} />
+                        </HStack>
                     </HStack>
                 </Flex>
             </chakra.div>
@@ -399,18 +409,99 @@ const Navbar = () => {
 Navbar.height = 65
 
 const SidebarOnNavbar = ({ close }) => {
+    const user = users[0]
+
     return (
         <Overlay onClick={close}>
-            <VStack bg={Color["blue-white"]} h='100vh' overflow='auto' w='310px' alignItems='start' className="sidebar-navbar">
-                <HStack mt='10px' justifyContent='space-between' w='full'>
-                    <Logo height={42} ml='10px' />
-                    <ButtonIcon mr='10px !important'>
-                        <MdOutlineClose size='25px' color={Color.main} onClick={close} />
+            <VStack bg='white' h='100vh' overflow='auto' w='250px' alignItems='start' className="sidebar-navbar">
+                <HStack justifyContent='space-between' px='10px' py='10px !important' w='full' bg={Color.grey2}>
+                    <Logo height={40} />
+                    <ButtonIcon width="33px" height="33px">
+                        <MdOutlineClose size='20px' color={Color.main} onClick={close} />
                     </ButtonIcon>
                 </HStack>
+                <Divider mt='0px !important' />
 
-                <SidebarLeft isMobile={true} />
-                <SidebarRight isMobile={true} />
+                <VStack w='full' alignItems='start' px='10px' my='20px !important'>
+                    <Image
+                        backgroundColor={Color["grey-50"]}
+                        maxH={'70px'}
+                        fit='cover'
+                        maxW={'70px'}
+                        minW={'70px'}
+                        padding='2.5px'
+                        rounded='lg'
+                        mb='5px'
+                        src={user.profile}
+                    />
+                    <HStack justifyContent='space-between' w='full' alignItems='center'>
+                        <VStack alignItems='start'>
+                            <chakra.h1
+                                fontWeight={'bold'}
+                                fontSize={fontSize.medium}
+                                color={Color.black}
+                                lineHeight='1em'
+                            >
+                                {user.name}
+                            </chakra.h1>
+                            <chakra.p
+                                fontWeight={'bold'}
+                                fontSize={fontSize.low2}
+                                color={Color["black-50"]}
+                                lineHeight='1em'
+                            >
+                                {user.as}
+                            </chakra.p>
+                        </VStack>
+                        <ButtonIcon width="33px" height="33px" bg='white'>
+                            <FiChevronRight size='20px' color={Color.main} />
+                        </ButtonIcon>
+                    </HStack>
+                </VStack>
+
+                <Divider mt='0 !important' />
+
+                <HStack pl='10px' mt='20px !important'>
+                    <chakra.div width='25px' height='25px' display='flex' justifyContent='center' alignItems='center'>
+                        <FaUserFriends size='19px' color={Color["black-75"]} />
+                    </chakra.div>
+                    <chakra.h1 fontSize={FontSize.low2} fontWeight='600' ml='7px !important' color={Color.black}>Following</chakra.h1>
+                </HStack>
+                <HStack pl='10px' mt='10px !important'>
+                    <chakra.div width='25px' height='25px' display='flex' justifyContent='center' alignItems='center'>
+                        <HiHashtag size='22px' color={Color["black-75"]} />
+                    </chakra.div>
+                    <chakra.h1 fontSize={FontSize.low2} fontWeight='600' ml='7px !important' color={Color.black}>Tags</chakra.h1>
+                </HStack>
+                <HStack pl='10px' mt='10px !important'>
+                    <chakra.div width='25px' height='25px' display='flex' justifyContent='center' alignItems='center'>
+                        <BsCalendar2EventFill size='17px' color={Color["black-75"]} />
+                    </chakra.div>
+                    <chakra.h1 fontSize={FontSize.low2} fontWeight='600' ml='7px !important' color={Color.black}>Event</chakra.h1>
+                </HStack>
+                <HStack pl='10px' mt='10px !important'>
+                    <chakra.div width='25px' height='25px' display='flex' justifyContent='center' alignItems='center'>
+                        <IoMdSettings size='22px' color={Color["black-75"]} />
+                    </chakra.div>
+                    <chakra.h1 fontSize={FontSize.low2} fontWeight='600' ml='7px !important' color={Color.black}>Settings</chakra.h1>
+                </HStack>
+                <HStack pl='10px' mt='10px !important'>
+                    <chakra.div width='25px' height='25px' display='flex' justifyContent='center' alignItems='center'>
+                        <IoMdHelpCircle size='22px' color={Color["black-75"]} />
+                    </chakra.div>
+                    <chakra.h1 fontSize={FontSize.low2} fontWeight='600' ml='7px !important' color={Color.black}>Help Center</chakra.h1>
+                </HStack>
+
+                <Divider mt='20px !important' />
+
+                <VStack h='full' justifyContent='end' pb='10px'>
+                    <HStack pl='10px' mt='10px !important'>
+                        <chakra.div width='25px' height='25px' display='flex' justifyContent='center' alignItems='center'>
+                            <IoIosExit size='22px' color={Color["black-75"]} />
+                        </chakra.div>
+                        <chakra.h1 fontSize={FontSize.low2} fontWeight='600' ml='7px !important' color={Color.black}>Sign Out</chakra.h1>
+                    </HStack>
+                </VStack>
             </VStack>
         </Overlay>
     )

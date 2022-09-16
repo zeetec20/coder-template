@@ -23,6 +23,14 @@
 
 }
 
+@media only screen and (max-width: 650px) {
+    .navbar {
+        .logo {
+            display: none;
+        }
+    }
+}
+
 @media only screen and (max-width: 530px) {
     .navbar {
         .button-bookmark, .button-notification, .button-search {
@@ -47,14 +55,6 @@
             height: 38px;
             min-width: 38px;
             max-width: 38px;
-        }
-    }
-}
-
-@media only screen and (max-width: 475px) {
-    .navbar {
-        .logo {
-            display: none;
         }
     }
 }

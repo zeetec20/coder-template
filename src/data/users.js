@@ -64,6 +64,36 @@ const users = [
         name: 'Ethan Owen',
         profile: 'assets/users/user_11.png',
         as: 'Software Engineer'
+    },
+    {
+        id: 12,
+        name: 'Ethan Owen',
+        profile: 'assets/users/user_11.png',
+        as: 'Software Engineer'
+    },
+    {
+        id: 13,
+        name: 'Ethan Owen',
+        profile: 'assets/users/user_11.png',
+        as: 'Software Engineer'
+    },
+    {
+        id: 14,
+        name: 'Ethan Owen',
+        profile: 'assets/users/user_11.png',
+        as: 'Software Engineer'
+    },
+    {
+        id: 15,
+        name: 'Ethan Owen',
+        profile: 'assets/users/user_11.png',
+        as: 'Software Engineer'
+    },
+    {
+        id: 16,
+        name: 'Ethan Owen',
+        profile: 'assets/users/user_11.png',
+        as: 'Software Engineer'
     }
 ]
 

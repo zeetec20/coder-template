@@ -4,6 +4,7 @@ import Color from "utils/color"
 import FontSize from "utils/fontSize"
 import { numberWithComma } from "utils/helper"
 import 'styles/components/popular_tags.scss'
+import { FiArrowRight } from "react-icons/fi"
 
 const PopularTags = () => {
     return (
@@ -16,7 +17,21 @@ const PopularTags = () => {
             px='15px'
             w='100%'
             className="popular-tags"
+            position='relative'
         >
+            <HStack
+                position='absolute'
+                bg={Color.main}
+                pl='13px' pr='15px'
+                py='3px'
+                rounded='full'
+                right='10px'
+                top='-10px'
+                cursor='pointer'
+            >
+                <FiArrowRight color='white' size='17px' />
+                <chakra.h1 fontSize={FontSize.low2} color='white' fontWeight='bold'>More Tags</chakra.h1>
+            </HStack>
             <HStack className="title" m={'0 !important'}>
                 <chakra.div
                     h='35px'

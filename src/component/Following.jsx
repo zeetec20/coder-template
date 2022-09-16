@@ -5,6 +5,7 @@ import { FaUserFriends } from "react-icons/fa"
 import Color from "utils/color"
 import FontSize from "utils/fontSize"
 import 'styles/components/following.scss'
+import { FiArrowRight } from "react-icons/fi"
 
 const Following = () => {
     const timeFromNow = () => moment().subtract(Math.floor(Math.random() * 12), 'month').fromNow(true)
@@ -21,7 +22,21 @@ const Following = () => {
             w='100%'
             mb='30px !important'
             className="following"
+            position='relative'
         >
+            <HStack
+                position='absolute'
+                bg={Color.main}
+                pl='13px' pr='15px'
+                py='3px'
+                rounded='full'
+                right='10px'
+                top='-10px'
+                cursor='pointer'
+            >
+                <FiArrowRight color='white' size='17px' />
+                <chakra.h1 fontSize={FontSize.low2} color='white' fontWeight='bold'>More Following</chakra.h1>
+            </HStack>
             <HStack className="title">
                 <chakra.div position='relative'>
                     <chakra.div
@@ -47,7 +62,7 @@ const Following = () => {
             </HStack>
 
             <chakra.div mt='5px !important'>
-                {followingAccount.map((data, index) => <Account key={index} profile={data.profile} name={data.name} lastUpdate={data.lastUpdate} />)}
+                {followingAccount.slice(0, 10).map((data, index) => <Account key={index} profile={data.profile} name={data.name} lastUpdate={data.lastUpdate} />)}
             </chakra.div>
         </VStack>
     )
